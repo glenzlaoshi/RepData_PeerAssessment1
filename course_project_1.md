@@ -78,7 +78,7 @@ Now let's create a histogram of the total number of steps taken in each day.
 hist(step_data$steps,breaks=10,col='blue',main="Frequency of the Total Number of Steps per Day",xlab="Steps per Day")
 ```
 
-![](course_project_1_files/figure-html/histogram-1.png)<!-- -->
+![](figures/histogram_1.png)<!-- -->
 
 From this graph, it looks like you could estimate that both the mean and median are a little more than 10,000 steps/day; let's check this out.
 
@@ -105,7 +105,7 @@ What if we look at the number of steps per day?
 plot(step_data$steps~step_data$date,type='l',main="Time Series Plot of Steps Taken per Day", ylab="Steps per Day",xlab="Date",col='red')
 ```
 
-![](course_project_1_files/figure-html/steps_per_day-1.png)<!-- -->
+![](figures/time_series_1.png)<!-- -->
 
 I think there are a number of possible questions we could ask regarding this data (i.e. general trend over time), however, it is very dependent upon the data subject, and may not meaningfully be applied to others.
 
@@ -119,7 +119,7 @@ interval_data <- complete_data %>%
 plot(interval_data$steps~interval_data$interval,type='l',main="Time Series Plot of Average Steps per Interval", ylab="Average Steps",xlab="Interval", col='red')
 ```
 
-![](course_project_1_files/figure-html/clean_time_series-1.png)<!-- -->
+![](figures/time_series_2.png)<!-- -->
 
 We can see from the graph that the maximum number of steps, on average, occurs at some interval between 750 and 1000. We could find out when this actually is a number of ways. For example we could find out what the maximum number of steps, on average, is; and then use that to find the interval where it occurs:
 
@@ -178,7 +178,7 @@ completed_step_data <- completed_data %>%
 hist(completed_step_data$steps,breaks=10,col='blue',main="Frequency of the Total Number of Steps per Day, NA's = 0",xlab="Steps per Day")
 ```
 
-![](course_project_1_files/figure-html/na_zeros-1.png)<!-- -->
+![](figures/histogram_2.png)<!-- -->
 
 This looks similar to the original histogram, except for the large column corresponding to zero steps. We replaced 2304 NA's with zeros, but this corresponds to 13.1147541% of the data, and obviously creates an outsized influence on the data. In addition, this also means that there were many days within the dataset that now have zero total steps, which is highly unlikely within the context of how the data was gathered. So, what might a better replacement option be? 
 
@@ -196,7 +196,7 @@ completed_step_data <- completed_data %>%
 hist(completed_step_data$steps,breaks=10,col='blue',main="Frequency of the Total Number of Steps per Day, NA's = Int.Ave.",xlab="Steps per Day")
 ```
 
-![](course_project_1_files/figure-html/na_interval_average-1.png)<!-- -->
+![](figures/histogram_3.png)<!-- -->
 
 ```r
 mean(completed_step_data$steps)
@@ -247,7 +247,7 @@ ggplot(interval_data, aes(x=interval, y=steps, color=day))+
     facet_wrap(~day,ncol=1,nrow=7)
 ```
 
-![](course_project_1_files/figure-html/time_series_by_day-1.png)<!-- -->
+![](figures/time_series_3.png)<!-- -->
 
 The above graph shows the time series for all days of the week. I am sure we can ask some really great questions about what might be shown on different days, but for now let's get back to comparing weekends to weekdays.
 
@@ -263,7 +263,7 @@ ggplot(interval_data, aes(x=interval, y=steps, color=day_type))+
     facet_wrap(~day_type,ncol=1,nrow=2)
 ```
 
-![](course_project_1_files/figure-html/time_series_weekends-1.png)<!-- -->
+![](figures/time_series_4.png)<!-- -->
 
 Alright! We can now try to attach some rationalizations to this visualization. The subject appears to start moving around later on the weekends (sleeping in a bit?), but is also moving more during the day than on weekdays (not sitting down working all day?) All this seems to make sense, at least initially and based upon what we know of the data provided.
 
